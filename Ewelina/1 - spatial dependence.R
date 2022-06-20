@@ -9,6 +9,8 @@ library(GISTools)
 library(lmtest)
 library(texreg)
 library(broom)
+library(spatialEco)
+library(tidyverse)
 
 # Read California shapefile
 setwd('/Users/ewelinaplachimowicz/Documents/GitHub/housing-prices-spatial-econometrics/model/')
@@ -184,8 +186,8 @@ OLS_1_houses<-lm(eq_houses, data=houses)
 summary(OLS_1_houses)
 
 # summary
-screenreg(list(GNS_1_houses, SAC_1_houses, SDEM_1_houses, SEM_1_houses, SDM_1_houses, SAR_1_houses, SLX_1_houses, OLS_1_houses), 
-          custom.model.names=c("GNS", "SAC", "SDEM", "SEM", "SDM", "SAR", "SLX", "OLS"))
+htmlreg(list(GNS_1_houses, SAC_1_houses, SDEM_1_houses, SEM_1_houses, SDM_1_houses, SAR_1_houses, SLX_1_houses, OLS_1_houses), 
+          custom.model.names=c("GNS", "SAC", "SDEM", "SEM", "SDM", "SAR", "SLX", "OLS"), file = 'spatial_models.html')
 
 ################################### Direct and indirect impacts ###################################  
 
